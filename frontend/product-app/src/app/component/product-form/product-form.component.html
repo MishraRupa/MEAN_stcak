@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h2 class="h5 mb-0">{{ isEditMode ? 'Edit Product' : 'Create Product' }}</h2>
+    </div>
+    
+    <div class="card-body">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input 
+            id="name"
+            type="text" 
+            class="form-control" 
+            formControlName="name" 
+            placeholder="Enter product name">
+        </div>
+
+        <div class="mb-3">
+          <label for="price" class="form-label">Price</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input 
+              id="price"
+              type="number" 
+              class="form-control" 
+              formControlName="price" 
+              placeholder="0.00">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea 
+            id="description"
+            class="form-control" 
+            formControlName="description" 
+            rows="3" 
+            placeholder="Describe the product...">
+          </textarea>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button 
+            type="submit" 
+            class="btn" 
+            [ngClass]="isEditMode ? 'btn-warning' : 'btn-success'"
+            [disabled]="productForm.invalid">
+            {{ isEditMode ? 'Update Product' : 'Create Product' }}
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
